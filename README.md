@@ -1,5 +1,8 @@
 # AirBnB_clone
 
+## Specifications
+[Google Style Python Documentation](http://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html)
+
 ## Project Workflow
 1. Thursday - 2/08: README.md, AUTHORS, Task3=BaseModel
 2. Friday   - 2/09:
