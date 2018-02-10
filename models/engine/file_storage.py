@@ -7,9 +7,8 @@
 
 import json
 import os.path
-from models.base_model import BaseModel
 
-class FileStorage(BaseModel):
+class FileStorage():
     """ serializes instances to a JSON file and deserializes JSON file to
     instances
 
@@ -23,20 +22,26 @@ class FileStorage(BaseModel):
 
     def all(self):
         """ return the dictionary '__objects' """
-        return self.__objects
+        return FileStorage.__objects
 
     def new(self, obj):
         """ set in '__objects' the obj with key '<obj class name>.id' """
-        self.__objects[self.__class__.__name__+ self.id] = obj
+        FileStorage.__objects['{}.{}'.format(obj.__class__.__name__, obj.id)] = obj.to_dict()
 
     def save(self):
         """ serialize '__objects' to the JSON file (path: '__file_path') """
-        with open(self.__file_path, mode='w', encoding='utf-8') as json_file:
-            json.dump(self.__objects, json_file)
+#        custom_dict = {}
+#        for key, obj in FileStorage.__objects.items():
+#            value = obj.to_dict()
+#            custom_dict[key] = value
+        with open(FileStorage.__file_path, mode='w', encoding='utf-8') as json_file:
+            json.dump(FileStorage.__objects, json_file)
 
     def reload(self):
         """ deserializes the JSON file to '__objects' (only if the JSON file
         exists; otherwise, do nothing) """
-        if os.path.exists(self.__file_path):
-            with open(self.__file_path, mode='r', encoding='utf-8') as json_file:
-                return json.load(json_file)
+        if os.path.exists(FileStorage.__file_path):
+            with open(FileStorage.__file_path, mode='r', encoding='utf-8') as json_file:
+                FileStorage.__objects = json.load(json_file)
+#                for objID, objAttr in json_object.items():
+#                    FileStorage.__objects[objAttr['id']] = objAttr
