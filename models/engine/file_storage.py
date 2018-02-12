@@ -45,14 +45,5 @@ class FileStorage():
                 loaded_dicts = json.load(json_file)
 
             for key, value in loaded_dicts.items():
-                new_instance = models.create_instance[value['__class__']](**value)
+                new_instance = models.classes[value['__class__']](**value)
                 FileStorage.__objects["{}.{}".format(value['__class__'], value['id'])] = new_instance
-
-            # FIND value associated with '__class__' (which is the string 'BaseModel')
-
-            # Create a BaseModel Instance that is mapped to the string 'BaseModel')
-
-            # Once we create a BaseModel instance, we want to pass all the attributes
-            # from the loaded_dict into that instance (except for __class__)
-
-#            FileStorage.__objects = loaded_dicts

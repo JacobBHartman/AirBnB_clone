@@ -6,7 +6,7 @@
 from models.engine.file_storage import FileStorage
 from models.base_model import BaseModel
 
-create_instance = { 'BaseModel': BaseModel }
+classes = { 'BaseModel': BaseModel }
 
 storage = FileStorage()
 storage.reload()
