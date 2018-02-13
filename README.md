@@ -1,15 +1,21 @@
 # AirBnB_clone
 
+## Description
+Phase I of four in an attempt to deploy upon a server, a copy of the AirBnB website. This includes a command interpreter to manipulate data without a visual interface (similar to a shell). The console interacts with class structures defining users, locations, and other objects.
+
+## Installation and Usage
+<goes here>
+
 ## Specifications
 [Google Style Python Documentation](http://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html)
 
 ## Project Workflow
-1. Thursday - 2/08: README.md, AUTHORS, Task3=BaseModel
-2. Friday   - 2/09:
-3. Saturday - 2/10:
-4. Sunday   - 2/11:
-5. Monday   - 2/12:
-6. Tuesday  - 2/13:
-7. Thursday - 2/14:
+6. Tuesday  - 2/13: UNITTests, advanced
+7. Wensday  - 2/14:
+
+* Go over variable names
+* See where iterators are unnecessary (if we only need a key, when we're also looking for values
+* Go over project flow
+* Read packages
 
 ## Authors

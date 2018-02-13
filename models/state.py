@@ -6,6 +6,7 @@
 
 from models.base_model import BaseModel
 
+
 class State(BaseModel):
     """
         this class defines a state

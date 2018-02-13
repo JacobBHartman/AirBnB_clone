@@ -6,6 +6,7 @@
 
 from models.base_model import BaseModel
 
+
 class Place(BaseModel):
     """
         this class defines a place

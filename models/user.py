@@ -7,6 +7,7 @@
 
 from models.base_model import BaseModel
 
+
 class User(BaseModel):
     """
         this class defines a user

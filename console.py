@@ -6,6 +6,8 @@
 
 import cmd
 import models
+import shlex
+
 
 class HBNBCommand(cmd.Cmd):
     prompt = '(hbnb) '
@@ -28,7 +30,7 @@ class HBNBCommand(cmd.Cmd):
         """ Print the string representation of an instance based on the class
         name and 'id'
         """
-        args = arg.split()
+        args = shlex.split(arg)
         try:
             if args[0] not in models.classes:
                 raise NameError
@@ -47,16 +49,16 @@ class HBNBCommand(cmd.Cmd):
             return
         objs = models.storage.all()
         for obj_id, obj in objs.items():
-            if obj.__class__.__name__ == class_name and str(obj.id) == expected_id:
-                 print(obj)
-                 return
+            if obj.__class__.__name__ == class_name and obj.id == expected_id:
+                print(obj)
+                return
         print("** no instance found **")
 
     def do_destroy(self, arg):
-        """ delete an instance based on the class name and 'id' (save the change
-        into the JSON file)
+        """ delete an instance based on the class name and 'id'
+        (save the change into the JSON file)
         """
-        args = arg.split()
+        args = shlex.split(arg)
         try:
             if args[0] not in models.classes:
                 raise NameError
@@ -74,15 +76,15 @@ class HBNBCommand(cmd.Cmd):
             return
         objs = models.storage.all()
         for obj_id, obj in objs.items():
-            if obj.__class__.__name__ == class_name and str(obj.id) == expected_id:
+            if obj.__class__.__name__ == class_name and obj.id == expected_id:
                 objs.pop(obj_id)
                 models.storage.save()
                 return
         print("** no instance found **")
 
     def do_all(self, arg):
-        """ print all string representation of all instances based or not on the
-        class name
+        """ print all string representation of all instances based or not on
+        the class name
         """
         try:
             new_list = []
@@ -105,7 +107,7 @@ class HBNBCommand(cmd.Cmd):
         """ update an instance based on the class name and 'id' by adding or
         updating attribute
         """
-        args = arg.split()
+        args = shlex.split(arg)
 
         try:
             if args[0] not in models.classes:
@@ -143,9 +145,11 @@ class HBNBCommand(cmd.Cmd):
             return
 
         try:
-            setattr(obj_to_change, 'expected_attr', args[3])
+            setattr(obj_to_change, expected_attr, args[3])
         except IndexError:
             print("** value missing **")
+
+        obj_to_change.save()
 
     def emptyline(self):
         pass

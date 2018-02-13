@@ -9,6 +9,7 @@ import uuid
 from datetime import datetime
 import models
 
+
 class BaseModel:
     """ Defines all common attributes and methods for other classes
 
@@ -38,11 +39,13 @@ class BaseModel:
 
     def __str__(self):
         """ A magic method that overloads __str__ with custom output """
-        return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)
+        return "[{}] ({}) {}".format(self.__class__.__name__, self.id,
+                                     self.__dict__)
 
     def __repr__(self):
         """ A magic method that overloads __str__ with custom output """
-        return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)
+        return "[{}] ({}) {}".format(self.__class__.__name__, self.id,
+                                     self.__dict__)
 
     def save(self):
         """ Update the public instance attribute 'updated_at' with the
