@@ -85,16 +85,19 @@ class HBNBCommand(cmd.Cmd):
         class name
         """
         try:
+            new_list = []
             objs = models.storage.all()
             if arg == "":
-                for obj_id, obj in objs.items():
-                    print(obj)
+                for obj in objs.values():
+                    new_list.append(obj)
+                print(new_list)
             else:
                 if arg not in models.classes:
                     raise NameError
                 for obj_id, obj in objs.items():
                     if obj.__class__.__name__ == arg:
-                        print(obj)
+                        new_list.append(obj)
+                print(new_list)
         except NameError:
             print("** class doesn't exist **")
 

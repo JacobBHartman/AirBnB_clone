@@ -40,6 +40,10 @@ class BaseModel:
         """ A magic method that overloads __str__ with custom output """
         return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)
 
+    def __repr__(self):
+        """ A magic method that overloads __str__ with custom output """
+        return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)
+
     def save(self):
         """ Update the public instance attribute 'updated_at' with the
         current 'datetime' """
