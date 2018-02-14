@@ -11,7 +11,6 @@ import shlex
 
 class HBNBCommand(cmd.Cmd):
     prompt = '(hbnb) '
-    file = None
 
     def do_create(self, arg):
         """ create a new instances of BaseModel, saves it to a JSON file
@@ -22,8 +21,8 @@ class HBNBCommand(cmd.Cmd):
         elif arg not in models.classes:
             print('** class doesn\'t exist **')
         else:
-            new_model = models.BaseModel()
-            new_model.save()
+            new_model = models.classes[arg]()
+            models.storage.save()
             print(new_model.id)
 
     def do_show(self, arg):
@@ -152,16 +151,18 @@ class HBNBCommand(cmd.Cmd):
         obj_to_change.save()
 
     def emptyline(self):
+        """ Do nothing if empty line """
         pass
 
     def do_quit(self, arg):
         """ Quit command to exit the program
         """
-        quit()
+        return True
 
     def do_EOF(self, arg):
         """ Quits the program """
-        quit()
+        print()
+        return True
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
