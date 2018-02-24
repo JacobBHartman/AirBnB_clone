@@ -1,23 +1,23 @@
-body {
-/*
-    display: flex;
-    flex-direction: column;
-*/
+* {
     margin: 0px;
     padding: 0px;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     font-color: #484848;
     font-size: 14px;
     font-family: Circular, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .container {
-/*    display: flex;*/
+    display: flex;
     max-width: 1000px;
     margin-top: 30px;
     margin-bottom: 30px;
-/*
-    justify-content: center;
-*/
     margin-left: auto;
     margin-right: auto;
+    width: 100%;
 }
